@@ -13,8 +13,7 @@
  * as a second argument
  *
  */
-/* global Mousetrap:true */
-(function(Mousetrap) {
+module.exports = function(Mousetrap) {
     var _oldBind = Mousetrap.prototype.bind;
     var args;
 
@@ -36,4 +35,4 @@
     };
 
     Mousetrap.init();
-}) (Mousetrap);
+}

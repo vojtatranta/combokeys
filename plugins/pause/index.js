@@ -3,8 +3,7 @@
  * this allows you to enable or disable keyboard shortcuts
  * without having to reset Mousetrap and rebind everything
  */
-/* global Mousetrap:true */
-(function(Mousetrap) {
+module.exports = function(Mousetrap) {
     var _originalStopCallback = Mousetrap.prototype.stopCallback;
 
     Mousetrap.prototype.stopCallback = function(e, element, combo) {
@@ -28,4 +27,4 @@
     };
 
     Mousetrap.init();
-}) (Mousetrap);
+}

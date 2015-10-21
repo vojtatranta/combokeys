@@ -3,7 +3,7 @@
  *
  * @author Dan Tao <daniel.tao@gmail.com>
  */
-(function(Mousetrap) {
+module.exports = function(Mousetrap) {
     /**
      * the sequence currently being recorded
      *
@@ -39,6 +39,13 @@
          * @type {null|number}
          */
         _recordTimer = null,
+
+        /**
+         * record timer duration
+         *
+         * @type {number}
+         */
+         _recordTimerDuration = 1000,
 
         /**
          * the original handleKey method to override when Mousetrap.record() is
@@ -176,7 +183,16 @@
      */
     function _restartRecordTimer() {
         clearTimeout(_recordTimer);
-        _recordTimer = setTimeout(_finishRecording, 1000);
+        _recordTimer = setTimeout(_finishRecording, _recordTimerDuration);
+    }
+
+    /**
+     * sets record timer duration
+     *
+     * @returns void
+     */
+    Mousetrap.prototype.setRecordTimerDuration = function(duration) {
+        _recordTimerDuration = duration
     }
 
     /**
@@ -202,4 +218,5 @@
 
     Mousetrap.init();
 
-})(Mousetrap);
+    return Mousetrap;
+}

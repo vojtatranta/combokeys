@@ -6,8 +6,7 @@
  * usage:
  * Mousetrap.bindGlobal('ctrl+s', _saveChanges);
  */
-/* global Mousetrap:true */
-(function(Mousetrap) {
+module.exports = function(Mousetrap) {
     var _globalCallbacks = {};
     var _originalStopCallback = Mousetrap.prototype.stopCallback;
 
@@ -40,4 +39,4 @@
     };
 
     Mousetrap.init();
-}) (Mousetrap);
+}
